@@ -1,0 +1,160 @@
+import { Meta, ColorPalette, ColorItem, Typeset } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Tokens" />
+
+# Токени
+
+Усі значення живуть лише в блоці `@theme` у `src/app/globals.css`. Ця сторінка їх показує, але не дублює: кольори, шрифти й розміри підтягуються зі змінних. Змінився `@theme` — оновлюємо й цю сторінку.
+
+## Кольори
+
+<ColorPalette>
+  <ColorItem
+    title="Фони"
+    subtitle="canvas — фон сторінки · surface — вікна й картки · surface-tint — низ градієнта екрана · line — рамки, розділювачі, світлий екран"
+    colors={{
+      canvas: "var(--color-canvas)",
+      surface: "var(--color-surface)",
+      "surface-tint": "var(--color-surface-tint)",
+      line: "var(--color-line)",
+    }}
+  />
+  <ColorItem
+    title="Акцент"
+    subtitle="accent — заголовки вікон, контур фокусу · on-accent — текст на accent"
+    colors={{
+      accent: "var(--color-accent)",
+      "on-accent": "var(--color-on-accent)",
+    }}
+  />
+  <ColorItem
+    title="Текст"
+    subtitle="ink — основний · ink-muted — другорядний · danger — текст і межа поля з помилкою"
+    colors={{
+      ink: "var(--color-ink)",
+      "ink-muted": "var(--color-ink-muted)",
+      danger: "var(--color-danger)",
+    }}
+  />
+  <ColorItem
+    title="Термінал"
+    subtitle="Темне вікно cmd.exe: фон, текст, посилання"
+    colors={{
+      "surface-inverse": "var(--color-surface-inverse)",
+      "on-inverse": "var(--color-on-inverse)",
+      "accent-on-inverse": "var(--color-accent-on-inverse)",
+    }}
+  />
+  <ColorItem
+    title="Кнопка Win98"
+    subtitle="button — заливка · button-light — світла фаска і hover · button-dark, button-shadow — темні фаски"
+    colors={{
+      button: "var(--color-button)",
+      "button-light": "var(--color-button-light)",
+      "button-dark": "var(--color-button-dark)",
+      "button-shadow": "var(--color-button-shadow)",
+    }}
+  />
+</ColorPalette>
+
+## Шрифти
+
+### font-pixel — заголовки вікон і «Portfolio»
+
+<Typeset
+  fontFamily="var(--font-pixel)"
+  fontWeight={400}
+  fontSizes={["var(--text-heading)", "var(--text-display)"]}
+  sampleText="Portfolio"
+/>
+
+### font-sans — увесь читабельний текст
+
+<Typeset
+  fontFamily="var(--font-sans)"
+  fontWeight={500}
+  fontSizes={["var(--text-caption)", "var(--text-body)", "var(--text-lead)"]}
+  sampleText="UI/UX designer for product teams"
+/>
+
+### font-mono — підписи, шляхи
+
+<Typeset
+  fontFamily="var(--font-mono)"
+  fontWeight={500}
+  fontSizes={["var(--text-caption)", "var(--text-lead)"]}
+  sampleText="mobile > book discussion app"
+/>
+
+### font-terminal — заголовок терміналу
+
+<Typeset
+  fontFamily="var(--font-terminal)"
+  fontWeight={400}
+  fontSizes={["var(--text-heading)"]}
+  sampleText="cmd.exe"
+/>
+
+## Шкала тексту
+
+Кожен розмір уже містить свою висоту рядка, трекінг і жирність.
+
+<div className="sb-unstyled flex flex-col gap-4 overflow-x-auto bg-canvas p-6 text-ink">
+  <p className="font-sans text-caption">text-caption — Client project, in progress.</p>
+  <p className="font-sans text-body">text-body — Hello! I am Alisa or Xiao. I design mobile apps and B2B web products.</p>
+  <p className="font-sans text-lead">text-lead — An app for discussing books with other readers.</p>
+  <p className="font-pixel text-heading">text-heading — info.exe</p>
+  <p className="font-pixel text-display">Portfolio</p>
+</div>
+
+## Радіуси
+
+Обидва радіуси дорівнюють нулю: у ретро-ОС кути прямі.
+
+<div className="sb-unstyled flex gap-6 bg-canvas p-6 text-ink">
+  <div className="flex flex-col gap-2">
+    <div className="rounded-control border border-ink-muted bg-button px-4 py-2 font-sans text-body">Button</div>
+    <p className="font-mono text-caption">rounded-control — кнопки, поля</p>
+  </div>
+  <div className="flex flex-col gap-2">
+    <div className="rounded-card border border-line bg-surface p-6 font-sans text-body">Card</div>
+    <p className="font-mono text-caption">rounded-card — картки, вікна</p>
+  </div>
+</div>
+
+## Відступи
+
+База 4px. Дозволені кроки — числа 1, 2, 3, 4, 6, 8 у класах (`p-3`, `gap-6`). Крок 1 — лише між кнопками керування вікна. Між великими секціями — `section`.
+
+<div className="sb-unstyled flex flex-col gap-3 bg-canvas p-6 text-ink">
+  <div className="flex items-center gap-4"><div className="h-4 w-1 bg-accent" /><p className="font-mono text-caption">1 — p-1, gap-1 (лише кнопки вікна)</p></div>
+  <div className="flex items-center gap-4"><div className="h-4 w-2 bg-accent" /><p className="font-mono text-caption">2 — p-2, gap-2</p></div>
+  <div className="flex items-center gap-4"><div className="h-4 w-3 bg-accent" /><p className="font-mono text-caption">3 — p-3, gap-3</p></div>
+  <div className="flex items-center gap-4"><div className="h-4 w-4 bg-accent" /><p className="font-mono text-caption">4 — p-4, gap-4</p></div>
+  <div className="flex items-center gap-4"><div className="h-4 w-6 bg-accent" /><p className="font-mono text-caption">6 — p-6, gap-6</p></div>
+  <div className="flex items-center gap-4"><div className="h-4 w-8 bg-accent" /><p className="font-mono text-caption">8 — p-8, gap-8</p></div>
+  <div className="flex items-center gap-4"><div className="h-4 w-section bg-accent" /><p className="font-mono text-caption">section — py-section, gap-section (між секціями)</p></div>
+</div>
+
+Ширина контенту сторінки — `max-w-content`.
+
+## Пропорції картинок
+
+<div className="sb-unstyled flex items-start gap-6 bg-canvas p-6 text-ink">
+  <div className="flex flex-col gap-2">
+    <div className="aspect-cover w-section border border-line bg-surface" />
+    <p className="font-mono text-caption">aspect-cover — обкладинка кейса</p>
+  </div>
+  <div className="flex flex-col gap-2">
+    <div className="aspect-portrait w-section border border-line bg-surface" />
+    <p className="font-mono text-caption">aspect-portrait — портрет, аватар</p>
+  </div>
+</div>
+
+## Тінь вікна
+
+Світла тінь, помітна на фоні `canvas`.
+
+<div className="sb-unstyled bg-canvas p-8 text-ink">
+  <div className="w-section border border-line bg-surface p-4 drop-shadow-window font-mono text-caption">drop-shadow-window</div>
+</div>
