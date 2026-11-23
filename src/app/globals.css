@@ -84,6 +84,20 @@
   /* ---------- Window shadow ---------- */
   --drop-shadow-*: initial;
   --drop-shadow-window: 6px 10px 3.4px rgb(253 251 251 / 0.3);
+
+  /* ---------- Win98 bevel (two 1px edges: light top-left, dark bottom-right) ---------- */
+  --shadow-*: initial;
+  --shadow-bevel:
+    inset 1px 1px 0 0 var(--color-button-light),
+    inset -1px -1px 0 0 var(--color-button-shadow),
+    inset 2px 2px 0 0 var(--color-button-light),
+    inset -2px -2px 0 0 var(--color-button-dark);
+  /* pressed: the same edges swapped */
+  --shadow-bevel-pressed:
+    inset 1px 1px 0 0 var(--color-button-shadow),
+    inset -1px -1px 0 0 var(--color-button-light),
+    inset 2px 2px 0 0 var(--color-button-dark),
+    inset -2px -2px 0 0 var(--color-button-light);
 }
 
 /* Font tokens point at next/font variables, so they use `inline`. */

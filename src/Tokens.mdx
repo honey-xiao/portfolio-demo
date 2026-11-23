@@ -151,6 +151,21 @@ import { Meta, ColorPalette, ColorItem, Typeset } from "@storybook/addon-docs/bl
   </div>
 </div>
 
+## Фаска кнопки
+
+Дві лінії по 1px: світла `button-light` зверху-зліва, темні `button-shadow` і `button-dark` знизу-справа. При натисканні — навпаки.
+
+<div className="sb-unstyled flex gap-6 bg-canvas p-6 text-ink">
+  <div className="flex flex-col gap-2">
+    <div className="bg-button px-6 py-3 shadow-bevel font-sans text-body">Button</div>
+    <p className="font-mono text-caption">shadow-bevel</p>
+  </div>
+  <div className="flex flex-col gap-2">
+    <div className="bg-button px-6 py-3 shadow-bevel-pressed font-sans text-body">Button</div>
+    <p className="font-mono text-caption">shadow-bevel-pressed</p>
+  </div>
+</div>
+
 ## Тінь вікна
 
 Світла тінь, помітна на фоні `canvas`.

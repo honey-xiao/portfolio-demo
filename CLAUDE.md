@@ -28,12 +28,15 @@
 - **Ширина контенту:** `max-w-content`.
 - **Пропорції картинок:** `aspect-cover` (обкладинка кейса), `aspect-portrait` (портрет, аватар).
 - **Тінь вікна:** `drop-shadow-window`.
+- **Фаска кнопки Win98:** `shadow-bevel` (звичайна), `shadow-bevel-pressed` (натиснута). Будуються з кольорів `button-light`, `button-shadow`, `button-dark`.
 
 Контраст: `ink` і `ink-muted` проходять 4,5:1 на `canvas`, `line` і `button`. На `surface` основний текст — лише `ink` (`ink-muted` там 3,43:1). Білий текст на `surface` не використовуємо.
 
 ## Компоненти
 
-Заповнимо далі.
+Кожен компонент лежить у `src/components/<Назва>/` разом з історією `<Назва>.stories.tsx` (одна історія з Controls, документація на вкладці Docs у Storybook).
+
+- **Button** (`src/components/Button/Button.tsx`) — піксельна кнопка Windows 98. Пропси: `children`, `size` (`md` | `lg`), `href` (стає `<a>`), `onClick`, `disabled`, `type`. Стани: hover, натискання (інвертована фаска), фокус (пунктир `accent`), disabled.
 
 ## Правила
 
