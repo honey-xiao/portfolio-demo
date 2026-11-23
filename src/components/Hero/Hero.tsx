@@ -37,6 +37,11 @@ const ERROR_W = 208;
 const ERROR_STACK = Array.from({ length: 6 }, (_, i) => ({ left: 28 + i * 15, top: 650 + i * 27 }));
 /** How long the laughing bunny stays (matches animate-laugh-peek). */
 const LAUGH_MS = 2200;
+/**
+ * Laughing bunny: art size, how far it rises above the last Error window's top edge,
+ * room above for the bounce, and how much of it may stay hidden under the titlebar.
+ */
+const LAUGH = { w: 186, h: 182, peek: 106, headroom: 8, belowEdge: 12 };
 const CASCADE_DELAY = 140;
 
 type ProjectId = "lorry" | "folio" | "vsl";
@@ -318,19 +323,31 @@ export function Hero() {
 
         {/* ---------- laughing bunny: peeks out from behind the last Error window ---------- */}
         {laughing && (
+          /* Clip box: the bunny is only ever visible above the window's top edge
+             (it ends 1 art row below it, under the titlebar), never below the window. */
           <div
             aria-hidden="true"
-            className="absolute animate-laugh-peek motion-reduce:animate-none"
-            style={{ left: ERROR_STACK[0].left + 20, top: ERROR_STACK[0].top - 106 }}
+            className="absolute overflow-hidden"
+            style={{
+              left: ERROR_STACK[0].left + 20,
+              top: ERROR_STACK[0].top - LAUGH.peek - LAUGH.headroom,
+              width: LAUGH.w,
+              height: LAUGH.headroom + LAUGH.peek + LAUGH.belowEdge,
+            }}
           >
-            <Image
-              src={bunnyLaugh}
-              alt=""
-              unoptimized
-              width={186}
-              height={182}
-              className="animate-laugh-bounce motion-reduce:animate-none"
-            />
+            <div
+              className="absolute left-0 animate-laugh-peek motion-reduce:animate-none"
+              style={{ top: LAUGH.headroom }}
+            >
+              <Image
+                src={bunnyLaugh}
+                alt=""
+                unoptimized
+                width={LAUGH.w}
+                height={LAUGH.h}
+                className="animate-laugh-bounce motion-reduce:animate-none"
+              />
+            </div>
           </div>
         )}
 
