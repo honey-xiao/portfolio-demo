@@ -55,6 +55,14 @@ import { Meta, ColorPalette, ColorItem, Typeset } from "@storybook/addon-docs/bl
       "button-shadow": "var(--color-button-shadow)",
     }}
   />
+  <ColorItem
+    title="Піксель-арт"
+    subtitle="art-line — контур хмаринки (як у зайця й курсора) · art-highlight — зіниці зайця"
+    colors={{
+      "art-line": "var(--color-art-line)",
+      "art-highlight": "var(--color-art-highlight)",
+    }}
+  />
 </ColorPalette>
 
 ## Шрифти
@@ -173,3 +181,17 @@ import { Meta, ColorPalette, ColorItem, Typeset } from "@storybook/addon-docs/bl
 <div className="sb-unstyled bg-canvas p-8 text-ink">
   <div className="w-section border border-line bg-surface p-4 drop-shadow-window font-mono text-caption">drop-shadow-window</div>
 </div>
+
+## Анімації
+
+Різкі піксельні кроки, без плавності. При «зменшеному русі» в системі вимикаються (`motion-reduce:animate-none`).
+
+<div className="sb-unstyled flex flex-wrap items-end gap-8 bg-canvas p-6 text-ink">
+  <div className="flex flex-col gap-2"><p className="font-mono text-lead"><span className="animate-caret">_</span></p><p className="font-mono text-caption">animate-caret — курсор терміналу</p></div>
+  <div className="flex flex-col gap-2"><div className="size-8 animate-bob bg-accent" /><p className="font-mono text-caption">animate-bob — заєць не спить</p></div>
+  <div className="flex flex-col gap-2"><div className="size-8 animate-breathe bg-accent" /><p className="font-mono text-caption">animate-breathe — заєць спить</p></div>
+  <div className="flex flex-col gap-2"><div className="size-8 animate-z-float bg-accent" /><p className="font-mono text-caption">animate-z-float — «Z» над сплячим зайцем</p></div>
+  <div className="flex flex-col gap-2"><div className="size-8 animate-laugh-bounce bg-accent" /><p className="font-mono text-caption">animate-laugh-bounce — заєць сміється</p></div>
+</div>
+
+Ще три анімації показані в самих компонентах: `animate-laugh-peek` (заєць виглядає з-за вікна Error), `animate-window-open` і `animate-window-close` (рамка «вилітає» з папки у вікно проєкту і назад) — див. **Sections/Hero**.

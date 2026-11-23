@@ -1,4 +1,4 @@
-import { IBM_Plex_Mono, Pixelify_Sans, Space_Grotesk, VT323 } from "next/font/google";
+import { IBM_Plex_Mono, JetBrains_Mono, Pixelify_Sans, Space_Grotesk, VT323 } from "next/font/google";
 
 /*
  * Site fonts. Imported by the root layout (and later by Storybook's preview).
@@ -34,6 +34,16 @@ export const vt323 = VT323({
   subsets: ["latin", "latin-ext"],
   weight: "400",
   variable: "--font-vt323",
+  display: "swap",
+});
+
+/**
+ * Decorative only, NOT a token: the command lines in the cmd.exe terminal.
+ * Apply with `jetbrainsMono.className` on that element; don't use it elsewhere.
+ */
+export const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: "500",
   display: "swap",
 });
 

@@ -31,6 +31,10 @@
   --color-button-dark: #7f0037; /* inner dark bevel edge */
   --color-button-shadow: #61002a; /* outer dark bevel edge */
 
+  /* Pixel-art colors used by UI pieces drawn in code */
+  --color-art-line: #e46c7e; /* speech-bubble outline (same as the bunny art and cursor) */
+  --color-art-highlight: #fac2ca; /* bunny eye highlight */
+
   /* ---------- Fonts (variables come from src/app/fonts.ts) ---------- */
   --font-*: initial;
 
@@ -98,6 +102,73 @@
     inset -1px -1px 0 0 var(--color-button-light),
     inset 2px 2px 0 0 var(--color-button-dark),
     inset -2px -2px 0 0 var(--color-button-light);
+
+  /* ---------- Motion: hard pixel steps, no easing ----------
+   * Bunny moves are in % of its own size, so they work at any scale
+   * (half an art pixel ≈ 1.29% of the bunny height). */
+  --animate-*: initial;
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-bob: bob 0.9s step-end infinite;
+  --animate-breathe: breathe 2.4s step-end infinite;
+  --animate-z-float: z-float 2.4s step-end infinite;
+  --animate-laugh-peek: laugh-peek 2.2s step-end both;
+  --animate-laugh-bounce: laugh-bounce 0.24s step-end infinite;
+  --animate-window-open: window-zoom 320ms steps(6, jump-none) forwards;
+  --animate-window-close: window-unzoom 240ms steps(5, jump-none) forwards;
+
+  @keyframes caret {
+    50% { opacity: 0; }
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-1.29%); }
+  }
+  @keyframes breathe {
+    0%, 100% { transform: translateY(0); }
+    10% { transform: translateY(1.29%); }
+    60% { transform: translateY(0); }
+  }
+  @keyframes z-float {
+    0% { transform: translate(0, 0); opacity: 1; }
+    25% { transform: translate(12.5%, -20%); }
+    50% { transform: translate(0, -40%); }
+    75% { transform: translate(12.5%, -60%); opacity: 1; }
+    90%, 100% { opacity: 0; }
+  }
+  @keyframes laugh-peek {
+    0% { transform: translateY(59.4%); }
+    4.545% { transform: translateY(38.8%); }
+    9.09% { transform: translateY(18.1%); }
+    13.64%, 86.36% { transform: translateY(0); }
+    90.91% { transform: translateY(18.1%); }
+    95.45% { transform: translateY(38.8%); }
+    100% { transform: translateY(59.4%); }
+  }
+  @keyframes laugh-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2.58%); }
+  }
+  /* Win98 "exploding rectangle": from the folder icon (--from-*) to the window (--to-*) */
+  @keyframes window-zoom {
+    from { left: var(--from-x); top: var(--from-y); width: var(--from-w); height: var(--from-h); }
+    to { left: var(--to-x); top: var(--to-y); width: var(--to-w); height: var(--to-h); }
+  }
+  @keyframes window-unzoom {
+    from { left: var(--to-x); top: var(--to-y); width: var(--to-w); height: var(--to-h); }
+    to { left: var(--from-x); top: var(--from-y); width: var(--from-w); height: var(--from-h); }
+  }
+}
+
+/* Site cursor: pixel arrow from the old info.exe (tip = hotspot), on links and buttons too. */
+@layer base {
+  html {
+    cursor: url("/cursor.svg") 0 0, auto;
+  }
+  *,
+  ::before,
+  ::after {
+    cursor: inherit;
+  }
 }
 
 /* Font tokens point at next/font variables, so they use `inline`. */
