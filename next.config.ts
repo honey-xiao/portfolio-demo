@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  // Storybook is built into public/storybook; Next.js doesn't serve a folder's
+  // index.html by itself, so /storybook opens the built Storybook page.
+  async redirects() {
+    return [{ source: "/storybook", destination: "/storybook/index.html", permanent: false }];
+  },
 };
 
 export default nextConfig;
