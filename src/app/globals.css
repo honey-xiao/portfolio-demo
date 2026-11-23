@@ -1,6 +1,95 @@
 @import "tailwindcss";
 
 /*
- * Design tokens (colors, fonts, spacing) will live here in @theme.
- * Intentionally empty for now: the token set comes next.
+ * Design tokens: the single source of values for the whole site.
+ * Light "retro OS" palette taken from the old first screen (portfolio-test).
+ * Tailwind's default palette, type scale, fonts and radii are reset, so only
+ * these tokens exist: an unknown class such as `text-white` or `text-sm`
+ * silently does nothing.
  */
+@theme {
+  /* ---------- Colors ---------- */
+  --color-*: initial;
+
+  --color-canvas: #fdd1ec; /* page background ("desktop") */
+  --color-surface: #ee9cc0; /* window body, cards */
+  --color-surface-tint: #fbacdd; /* bottom of the inner-screen gradient (top is `line`) */
+  --color-line: #fef6f7; /* window borders, dividers, light inner screen */
+  --color-accent: #b05284; /* window titlebars, focus outline */
+  --color-on-accent: #ffffff; /* text on accent (4.79:1) */
+  --color-ink: #6e2a4f; /* main text */
+  --color-ink-muted: #8a3e66; /* secondary text */
+  --color-danger: #9a3412; /* error text and error field border */
+
+  --color-surface-inverse: #4d2339; /* dark terminal window (cmd.exe) */
+  --color-on-inverse: #fef6f7; /* text on surface-inverse */
+  --color-accent-on-inverse: #c784a7; /* links on surface-inverse */
+
+  /* Win98 bevel button */
+  --color-button: #ffcae1; /* face */
+  --color-button-light: #ffd7e9; /* light bevel edge, hover face */
+  --color-button-dark: #7f0037; /* inner dark bevel edge */
+  --color-button-shadow: #61002a; /* outer dark bevel edge */
+
+  /* ---------- Fonts (variables come from src/app/fonts.ts) ---------- */
+  --font-*: initial;
+
+  /* ---------- Type scale: size + line height + tracking + weight ---------- */
+  --text-*: initial;
+
+  --text-caption: 12px;
+  --text-caption--line-height: normal;
+  --text-caption--letter-spacing: 0;
+  --text-caption--font-weight: 500;
+
+  --text-body: 16px;
+  --text-body--line-height: 1.3;
+  --text-body--letter-spacing: 0;
+  --text-body--font-weight: 500;
+
+  --text-lead: 20px;
+  --text-lead--line-height: normal;
+  --text-lead--letter-spacing: 0;
+  --text-lead--font-weight: 500;
+
+  --text-heading: 24px;
+  --text-heading--line-height: normal;
+  --text-heading--letter-spacing: 0;
+  --text-heading--font-weight: 400;
+
+  --text-display: 200px;
+  --text-display--line-height: normal;
+  --text-display--letter-spacing: 0;
+  --text-display--font-weight: 400;
+
+  /* ---------- Radii: retro windows have square corners ---------- */
+  --radius-*: initial;
+  --radius-control: 0;
+  --radius-card: 0;
+
+  /* ---------- Spacing ----------
+   * Base unit 4px. Allowed steps: 4, 8, 12, 16, 24, 32 px
+   * → classes with 1, 2, 3, 4, 6, 8 (p-3 = 12px, gap-6 = 24px).
+   * 4px (…-1) is only for the gap between window control buttons. */
+  --spacing: 4px;
+  --spacing-section: 96px; /* between large page sections */
+
+  /* ---------- Layout ---------- */
+  --container-content: 1384px; /* content width: 1440 frame − 2 × 28 */
+
+  /* ---------- Image ratios ---------- */
+  --aspect-cover: 4 / 3; /* case-study cover */
+  --aspect-portrait: 1 / 1; /* portrait / avatar */
+
+  /* ---------- Window shadow ---------- */
+  --drop-shadow-*: initial;
+  --drop-shadow-window: 6px 10px 3.4px rgb(253 251 251 / 0.3);
+}
+
+/* Font tokens point at next/font variables, so they use `inline`. */
+@theme inline {
+  --font-pixel: var(--font-pixelify), monospace;
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-terminal: var(--font-vt323), monospace;
+}
